@@ -1,19 +1,59 @@
 import axios from "axios";
 
-const API_URL = "https://apiheya-sky-scrapper-v1.p.rapidapi.com/flights";
+const API_KEY = "bdaaf6df2bmshdf0727fc340485bp17dd54jsn2e8ea6d6b34d";
+const API_HOST = "sky-scrapper.p.rapidapi.com";
 
-export const getFlightData = async (origin, destination) => {
+const axiosInstance = axios.create({
+  headers: {
+    "x-rapidapi-key": API_KEY,
+    "x-rapidapi-host": API_HOST,
+  },
+});
+
+export const getNearbyAirports = async (lat, lng, locale = "en-US") => {
   try {
-    const response = await axios.get(API_URL, {
-      params: { origin, destination },
-      headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
-        "X-RapidAPI-Host": "apiheya-sky-scrapper-v1.p.rapidapi.com",
-      },
-    });
-    return response.data;
+    const response = await axiosInstance.get(
+      "/api/v1/flights/getNearByAirports",
+      {
+        params: { lat, lng, locale },
+      }
+    );
+    return response.data.airports;
   } catch (error) {
-    console.error("Error fetching flight data:", error);
+    console.error("Error fetching nearby airports:", error);
     throw error;
   }
+};
+
+export const searchAirports = async (query, locale = "en-US") => {
+  try {
+    const response = await axiosInstance.get("/api/v1/flights/searchAirports", {
+      params: { query, locale },
+    });
+    return response.data.airports;
+  } catch (error) {
+    console.error("Error searching airports:", error);
+    throw error;
+  }
+};
+
+export const searchFlights = async (params) => {
+  try {
+    const response = await axiosInstance.get(
+      "/api/v2/flights/searchFlightsWebComplete",
+      { params }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error searching flights:", error);
+    throw error;
+  }
+};
+
+// You can add more API functions here as needed
+
+export default {
+  getNearbyAirports,
+  searchAirports,
+  searchFlights,
 };

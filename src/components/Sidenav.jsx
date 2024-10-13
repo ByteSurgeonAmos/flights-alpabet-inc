@@ -12,18 +12,18 @@ import {
   HelpCircle,
   X,
 } from "lucide-react";
+import React from "react";
 const SideNavItem = ({ icon, text, isActive }) => (
   <a
     href="#"
-    className={`flex items-center px-4 py-2 text-sm ${
+    className={`flex items-center px-4 py-2 text-sm sm:text-base ${
       isActive ? "bg-blue-600 text-white" : "text-gray-300 hover:bg-gray-700"
     }`}
   >
-    {icon}
+    {React.cloneElement(icon, { className: "w-5 h-5 sm:w-6 sm:h-6" })}
     <span className="ml-3">{text}</span>
   </a>
 );
-
 const GoogleLogo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -57,59 +57,44 @@ const GoogleLogo = () => (
 
 const Sidenav = ({ isOpen, onClose }) => {
   return (
-    <nav
-      className={`fixed left-0 top-0 bottom-0 w-64 bg-gray-800 transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300 ease-in-out z-20`}
-    >
-      <div className="flex items-center justify-between p-4">
-        <GoogleLogo />
-        <button onClick={onClose} className="text-gray-300 hover:text-white">
-          <X className="w-6 h-6" />
-        </button>
-      </div>
-      <div className="mt-4">
-        <SideNavItem icon={<Search className="w-5 h-5" />} text="Explore" />
-        <SideNavItem
-          icon={<Plane className="w-5 h-5" />}
-          text="Flights"
-          isActive={true}
-        />
-        <SideNavItem icon={<Building className="w-5 h-5" />} text="Hotels" />
-        <SideNavItem
-          icon={<Home className="w-5 h-5" />}
-          text="Vacation rentals"
-        />
-        <SideNavItem
-          icon={<TrendingUp className="w-5 h-5" />}
-          text="Tracked flight prices"
-        />
-        <SideNavItem
-          icon={<Globe className="w-5 h-5" />}
-          text="Change language"
-        />
-        <SideNavItem
-          icon={<DollarSign className="w-5 h-5" />}
-          text="Change currency"
-        />
-        <SideNavItem
-          icon={<MapPin className="w-5 h-5" />}
-          text="Change location"
-        />
-      </div>
-      <div className="absolute bottom-0 w-full p-4">
-        <SideNavItem
-          icon={<Settings className="w-5 h-5" />}
-          text="Flights settings"
-        />
-        <SideNavItem
-          icon={<MessageSquare className="w-5 h-5" />}
-          text="Feedback"
-        />
-        <SideNavItem icon={<HelpCircle className="w-5 h-5" />} text="Help" />
-      </div>
-    </nav>
+    <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
+          onClick={onClose}
+        ></div>
+      )}
+      <nav
+        className={`fixed left-0 top-0 bottom-0 w-64 sm:w-72 md:w-80 bg-gray-800 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out z-20 overflow-y-auto`}
+      >
+        <div className="flex items-center justify-between p-4">
+          <GoogleLogo />
+          <button
+            onClick={onClose}
+            className="text-gray-300 hover:text-white p-2"
+          >
+            <X className="w-6 h-6 sm:w-8 sm:h-8" />
+          </button>
+        </div>
+        <div className="mt-4 space-y-1">
+          <SideNavItem icon={<Search />} text="Explore" />
+          <SideNavItem icon={<Plane />} text="Flights" isActive={true} />
+          <SideNavItem icon={<Building />} text="Hotels" />
+          <SideNavItem icon={<Home />} text="Vacation rentals" />
+          <SideNavItem icon={<TrendingUp />} text="Tracked flight prices" />
+          <SideNavItem icon={<Globe />} text="Change language" />
+          <SideNavItem icon={<DollarSign />} text="Change currency" />
+          <SideNavItem icon={<MapPin />} text="Change location" />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 space-y-1 bg-gray-800">
+          <SideNavItem icon={<Settings />} text="Flights settings" />
+          <SideNavItem icon={<MessageSquare />} text="Feedback" />
+          <SideNavItem icon={<HelpCircle />} text="Help" />
+        </div>
+      </nav>
+    </>
   );
 };
-
 export default Sidenav;

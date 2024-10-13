@@ -28,7 +28,6 @@ const ExploreDestinations = ({ currentLocation }) => {
 
       <div className="relative">
         <div className="w-full h-64 bg-gray-800 rounded-lg overflow-hidden">
-          {/* <WorldMap /> */}
           <img src="/world.png" alt="world image" />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">

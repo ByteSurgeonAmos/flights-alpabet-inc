@@ -32,13 +32,13 @@ const FAQ = ({ question, answer }) => {
 
 const FlightInfoDashboard = ({ currentLocation }) => {
   const popularDestinations = [
-    { name: "Masai Mara", image: "/api/placeholder/200/150?text=Masai+Mara" },
-    { name: "Mombasa", image: "/api/placeholder/200/150?text=Mombasa" },
-    { name: "Zanzibar", image: "/api/placeholder/200/150?text=Zanzibar" },
-    { name: "Lamu", image: "/api/placeholder/200/150?text=Lamu" },
-    { name: "Serengeti", image: "/api/placeholder/200/150?text=Serengeti" },
-    { name: "Naivasha", image: "/api/placeholder/200/150?text=Naivasha" },
-    { name: "Amboseli", image: "/api/placeholder/200/150?text=Amboseli" },
+    { name: "Masai Mara", image: "/maasaimara.jpg" },
+    { name: "Mombasa", image: "/mombasa.jpg" },
+    { name: "Zanzibar", image: "/zanzibar.jpg" },
+    { name: "Lamu", image: "/lamu.jpg" },
+    { name: "Serengeti", image: "/serengeti.jpg" },
+    { name: "Naivasha", image: "/naivasha.jpg" },
+    { name: "Amboseli", image: "/amboseli.jpg" },
   ];
 
   const faqs = [

@@ -7,6 +7,7 @@ import {
   User,
   MapPin,
   Plane,
+  Search,
 } from "lucide-react";
 
 const FlightSearch = () => {
@@ -321,10 +322,10 @@ const FlightSearch = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 focus:outline-none shadow-lg disabled:opacity-50 w-full sm:w-auto"
+            className="bg-blue-600 flex gap-3 text-white px-8 py-3 rounded-full hover:bg-blue-700 focus:outline-none shadow-lg disabled:opacity-50 w-full sm:w-auto"
             disabled={loading}
           >
-            {loading ? "Searching..." : "Explore"}
+            <Search /> {loading ? "Searching..." : "Explore"}
           </button>
         </div>
       </form>

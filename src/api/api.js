@@ -50,8 +50,6 @@ export const searchFlights = async (params) => {
   }
 };
 
-// You can add more API functions here as needed
-
 export default {
   getNearbyAirports,
   searchAirports,

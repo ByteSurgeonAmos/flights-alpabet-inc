@@ -16,13 +16,13 @@ const ExploreDestinations = ({ currentLocation }) => {
           {currentLocation}
         </span>
         <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">
-          Nairobi
+          New York
         </span>
         <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">
-          Samburu County
+          London
         </span>
         <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">
-          Meru
+          Praque
         </span>
       </div>
 
